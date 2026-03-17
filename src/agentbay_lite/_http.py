@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import time
+import uuid
+from datetime import datetime, timezone
 from typing import Any
 
 import httpx
@@ -134,6 +136,10 @@ class SyncRpcClient:
             "Action": action,
             "Version": _API_VERSION,
             "Format": "json",
+            "Timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "SignatureNonce": uuid.uuid4().hex,
+            "BearerToken": self._api_key,
+            "SignatureType": "BEARERTOKEN",
         }
 
         last_exc: Exception | None = None
@@ -203,6 +209,10 @@ class AsyncRpcClient:
             "Action": action,
             "Version": _API_VERSION,
             "Format": "json",
+            "Timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "SignatureNonce": uuid.uuid4().hex,
+            "BearerToken": self._api_key,
+            "SignatureType": "BEARERTOKEN",
         }
 
         last_exc: Exception | None = None

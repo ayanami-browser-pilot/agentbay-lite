@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "agentbay-lite"
-version = "1.0.0"
+version = "1.0.1"
 description = "Minimal cloud browser SDK for AgentBay (Alibaba Cloud Wuying) — session lifecycle management via CDP."
 readme = "README.md"
 license = "MIT"

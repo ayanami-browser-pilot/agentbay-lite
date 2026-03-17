@@ -9,6 +9,7 @@ Minimal cloud browser SDK for [AgentBay](https://help.aliyun.com/zh/wuying-agent
 - **Lightweight**: only `httpx` + `pydantic`, no Alibaba Cloud SDK dependency
 - **Sync & Async**: `AgentBayCloud` and `AsyncAgentBayCloud` clients
 - **Context manager**: sessions auto-delete on exit
+- **Alibaba Cloud RPC**: proper Bearer token auth with Timestamp/SignatureNonce
 - **Unified interface**: same API shape as [browser-use-lite](https://pypi.org/project/browser-use-lite/), [skyvern-lite](https://pypi.org/project/skyvern-lite/), [airtop-lite](https://pypi.org/project/airtop-lite/)
 
 ## Install

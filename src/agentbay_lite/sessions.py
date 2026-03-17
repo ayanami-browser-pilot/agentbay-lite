@@ -144,10 +144,11 @@ class SessionsResource:
 
         data = self._rpc.rpc_call("ListSession", body if body else None)
 
-        # ListSession returns {"Sessions": [{"SessionId": "...", ...}, ...]}
-        sessions = data.get("Sessions") or data.get("sessions") or []
+        # ListSession may return a list directly or {"Sessions": [...]}
         if isinstance(data, list):
             sessions = data
+        else:
+            sessions = data.get("Sessions") or data.get("sessions") or []
         return [
             SessionInfo(
                 session_id=s.get("SessionId", ""),
@@ -285,9 +286,10 @@ class AsyncSessionsResource:
 
         data = await self._rpc.rpc_call("ListSession", body if body else None)
 
-        sessions = data.get("Sessions") or data.get("sessions") or []
         if isinstance(data, list):
             sessions = data
+        else:
+            sessions = data.get("Sessions") or data.get("sessions") or []
         return [
             SessionInfo(
                 session_id=s.get("SessionId", ""),
